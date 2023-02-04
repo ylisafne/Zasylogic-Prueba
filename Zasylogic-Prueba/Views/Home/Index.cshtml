@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Zasylogic_Prueba.Models.Formulario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" data-acc="0">Registrar Nuevo</a>
+</p>
+<div class="row">
+    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+        <div class="form-group">
+            <label class="control-label">Desde</label>
+            <input type="date" class="form-control dt" />
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+        <div class="form-group">
+            <label class="control-label">Hasta</label>
+            <input type="date" class="form-control dt" />
+        </div>
+    </div>
+    
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script type="text/javascript">
+    $(".dt").on("input", function () {
+        $('#ModalSelect').modal('show'); 
+    });
+    
+</script>
+
+
+<table class="table" id="gv">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Celular)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Motivo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaAlta)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="modal" id="ModalSelect" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-info">EF core: _context.Formulario.Where(e => e.FechaAlta >= ParametroDesde && e.FechaAlta >= ParametroHasta) </p>
+                <p class="text-success">SQL: select * from Formulario where FechaAlta between ParametroDesde and ParametroHasta </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

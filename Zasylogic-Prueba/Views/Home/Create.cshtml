@@ -1,0 +1,90 @@
+﻿@model Zasylogic_Prueba.Models.Formulario
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h3>FORMULARIO WEB DE ATENCION AL CLIENTE</h3>
+
+<div class="row col-md-8 center">
+    <div class="row mb-3">
+        <label asp-for="Nombre" class="col-sm-4"></label>
+        <div class="col-sm-6">
+            <input asp-for="Nombre" class="form-control" >
+        </div>
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+<div class="row mb-3">
+        <label asp-for="Apellido" class="col-sm-4"></label>
+        <div class="col-sm-6">
+            <input asp-for="Apellido" class="form-control">
+        </div>
+        <span asp-validation-for="Apellido" class="text-danger"></span>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="Celular" class="col-sm-4"></label>
+        <div class="col-sm-6">
+            <input asp-for="Celular" class="form-control">
+        </div>
+        <span asp-validation-for="Celular" class="text-danger"></span>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="Email" class="col-sm-4"></label>
+        <div class="col-sm-6">
+            <input asp-for="Email" class="form-control">
+        </div>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="Sexo" class="col-sm-4"></label>
+        <div class="col-sm-6">
+            <input asp-for="Sexo" class="form-control">
+        </div>
+        <span asp-validation-for="Sexo" class="text-danger"></span>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="Motivo" class="col-sm-4"></label>
+        <div class="col-sm-6">
+            <select asp-for="Motivo" class="form-control" asp-items="ViewBag.Motivo">
+                <option value="" disabled selected hidden>Seleccione</option>
+                <option value="1">Incidencia</option>
+                <option value="2">Queja</option>
+                <option value="3">Reclamacion</option>
+                <option value="3">Sugerencia</option>
+            </select>
+        </div>
+        <span asp-validation-for="Motivo" class="text-danger"></span>
+    </div>
+    <button type="button" class="btn btn-secondary">Enviar</button>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script type="text/javascript">
+    $(".btn").click(function () {
+        $('#ModalInsert').modal('show');
+    });
+
+</script>
+<div class="modal" id="ModalInsert" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Insert</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-info">EF core: _context.Formulario.add(model) </p>
+                <p class="text-success">SQL: Insert into Formulario (nombres, apellidos, celular, email, sexo
+                    motivo, fecha_alta) values (model.Nombres, model.apellidos, model.celular, model.email, model.sexo
+                    model.motivo, model.fecha_alta)
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
